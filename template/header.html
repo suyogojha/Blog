@@ -1,0 +1,34 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+
+
+    {% for cat in cats %}
+
+    <li><a href="/category/{{cat.url}}">{{cat.title}}</a></li>
+
+    {% endfor %}
+
+</ul>
+<nav class="bg-primary">
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="/home" class="brand-logo">{{request.user}}</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                {% if request.user.is_active %}
+                <li><a href="/user/logout">Logout</a></li>
+                <li><a href="/admin">ADMIN</a></li>
+
+                {% else %}
+                <li><a href="/user/login">Login</a></li>
+                <li><a href="/user/register">Register</a></li>
+                {% endif %}
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">CATEGORY<i
+                        class="material-icons right">arrow_drop_down</i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
